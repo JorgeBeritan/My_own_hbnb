@@ -66,3 +66,11 @@ class User:
             raise ValueError("The last name is required")
         
         self.__last_name = value
+
+    def to_dict(self):
+        return {
+            "id": self.__id,
+            "email": self.__email,
+            "first_name": self.__first_name,
+            "last_name": self.__last_name
+        }
