@@ -7,12 +7,13 @@ from validator import email_validator
 class User:
 
     __emails = set()
-
+    __instances = {}
     def __init__(self, email, first_name, last_name):
         self.__id = str(uuid.uuid4())
         self.email = email
         self.first_name = first_name
         self.last_name = last_name
+        User.__instances[self.__id] = self
 
     @property
     def id (self):
@@ -38,7 +39,7 @@ class User:
             raise ValueError("The email is not valid")
         if email == "":
             raise ValueError("Something wrong here")
-        
+        self.__emails.add(email)
         self.__email = email
 
     @property
@@ -74,3 +75,10 @@ class User:
             "first_name": self.__first_name,
             "last_name": self.__last_name
         }
+
+    @classmethod
+    def getUserById(cls, user_id):
+        return cls.__instances.get(user_id)
+    
+u1 = User("jorge@example.com", "Jorge", "beritan")
+print(User.getUserById(u1.id).to_dict())
