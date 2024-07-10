@@ -29,4 +29,9 @@ class UserPersistence:
         if user:
             db.session.delete(user)
             db.session.commit()
+    
+    @staticmethod
+    def filter_user_by_email(user_email):
+        user = User.query.filter_by(email=user_email).first()
+        return user
 

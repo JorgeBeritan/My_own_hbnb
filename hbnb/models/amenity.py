@@ -1,5 +1,3 @@
-import sys
-sys.path.insert(0, "/home/kbit/Desktop/My_own_hbnb/hbnb")
 import uuid
 from config import db
 

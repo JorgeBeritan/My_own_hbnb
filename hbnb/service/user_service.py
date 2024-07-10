@@ -7,8 +7,8 @@ from user_persistence import UserPersistence
 class UserService:
 
     @staticmethod
-    def create_user(email, first_name, last_name):
-        new_user = User(email, first_name, last_name)
+    def create_user(email, first_name, last_name, password, is_admin=False):
+        new_user = User(email, first_name, last_name, password, is_admin)
         UserPersistence.add_user(new_user)
         return new_user
 
@@ -42,4 +42,9 @@ class UserService:
             UserPersistence.delete_user(user)
             return True
         return False
+
+    @staticmethod
+    def filter_user_by_email(user_email):
+        user = UserPersistence.filter_user_by_email(user_email)
+        return user
 

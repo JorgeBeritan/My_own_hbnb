@@ -52,7 +52,7 @@ class PlaceService:
         number_of_bathrooms,
         max_guest,
         price_per_night,
-        latidude,
+        latitude,
         longitude,
         host_id,
         city_id
